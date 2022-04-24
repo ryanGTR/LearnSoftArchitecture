@@ -6,11 +6,51 @@
 
   <groupId>org.example</groupId>
   <artifactId>LearnSoftwareArchitecture</artifactId>
+  <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>account</module>
+  </modules>
 
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <sonar.dependencyCheck.htmlReportPath>./target/dependency-check-report.html
+    </sonar.dependencyCheck.htmlReportPath>
+    <sonar.dependencyCheck.jsonReportPath>./target/dependency-check-report.json
+    </sonar.dependencyCheck.jsonReportPath>
+    <sonar.dependencyCheck.summarize>true</sonar.dependencyCheck.summarize>
+    <sonar.host.url>http://localhost:9000/</sonar.host.url>
   </properties>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.8.0.2131</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.owasp</groupId>
+        <artifactId>dependency-check-maven</artifactId>
+        <version>7.1.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <formats>
+            <format>html</format>
+            <format>json</format>
+          </formats>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
