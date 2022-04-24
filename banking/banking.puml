@@ -1,0 +1,25 @@
+@startuml
+class com.ryan.banking.Client {
+- String name
+- Map<AccountType,BankAccount> accounts
++ String getName()
++ void opens(BankAccount)
++ BankAccount get(AccountType)
+}
+class com.ryan.banking.BankAccount {
+- AccountType accountType
+- double balance
++ {static} BankAccount ofType(AccountType)
++ BankAccount withBalance(double)
++ void deposit(double)
++ void withdraw(double)
++ double getBalance()
++ AccountType getAccountType()
+}
+enum com.ryan.banking.AccuntType {
++  Current
++  Savings
++  Investment
++  SuperSaver
+}
+@enduml
