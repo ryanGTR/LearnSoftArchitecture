@@ -1,6 +1,7 @@
 package com.ryan.stepdefinitions;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.ryan.banking.AccountType;
 import com.ryan.banking.BankAccount;
@@ -54,5 +55,8 @@ public class TransferStepDefinitions {
   }
 
   @Then("he/she should receive an {string} error")
-  public void iShouldReceiveAnError(String errorMessage) {}
+  public void iShouldReceiveAnError(String errorMessage) {
+    String msg = transfer.getTransferMessage();
+    assertEquals("insufficient funds", msg);
+  }
 }

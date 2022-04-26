@@ -4,6 +4,7 @@ public class TransferApi {
 
   double amountToTransfer;
   BankAccount sourceAccount;
+  String transferMessage;
 
   public TransferApi theAmount(double amountToTransfer) {
     this.amountToTransfer = amountToTransfer;
@@ -19,6 +20,12 @@ public class TransferApi {
     if (sourceAccount.getBalance() >= amountToTransfer) {
       sourceAccount.withdraw(amountToTransfer);
       destinationAccount.deposit(amountToTransfer);
+    } else {
+      this.transferMessage = "insufficient funds";
     }
+  }
+
+  public String getTransferMessage() {
+    return transferMessage;
   }
 }

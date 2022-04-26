@@ -16,7 +16,14 @@ class com.ryan.banking.BankAccount {
 + double getBalance()
 + AccountType getAccountType()
 }
-enum com.ryan.banking.AccuntType {
+class com.ryan.banking.TransferApi {
+~ double amountToTransfer
+~ BankAccount sourceAccount
++ TransferApi theAmount(double)
++ TransferApi from(BankAccount)
++ void to(BankAccount)
+}
+enum com.ryan.banking.AccountType {
 +  Current
 +  Savings
 +  Investment
